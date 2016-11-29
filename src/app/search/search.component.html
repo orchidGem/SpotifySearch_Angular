@@ -1,0 +1,23 @@
+<h1>Search Music</h1>
+<p>Search your music with Spotify here</p>
+<form>
+  <div class="form-group">
+    <input class="form-control" type="text" #searchStr (keyup)="searchMusic(searchStr.value)">
+  </div>
+</form>
+
+<div *ngIf="searchResults">
+  <div *ngFor="let result of searchResults">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="search-result well">
+          <h4><a [routerLink]="['/artist', result.id]">{{result.name}}</a></h4>
+          <div>
+            <strong>Genres: </strong>
+            <span *ngFor="let genre of result.genres">{{genre}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
